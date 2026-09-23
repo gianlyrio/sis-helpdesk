@@ -3,10 +3,21 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class Ticket extends Model
+
 {
-    public function department(): \Illuminate\Database\Eloquent\Relations\BelongsTo
+    protected $fillable = [
+        'department_id',
+        'title',
+        'requester_name',
+        'priority',
+        'description',
+        'status'
+    ];
+
+    public function department(): BelongsTo
     {
         return $this->belongsTo(Department::class);
     }
