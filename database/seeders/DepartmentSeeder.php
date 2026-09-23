@@ -2,10 +2,11 @@
 
 namespace Database\Seeders;
 
+use App\Models\Department;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
-class DepartamentSeeder extends Seeder
+class DepartmentSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -20,6 +21,8 @@ class DepartamentSeeder extends Seeder
        ];
 
        foreach ($departments as $dept) {
-            Departament::create($dept);
+            Department::create($dept);
+        }
     }
+
 }

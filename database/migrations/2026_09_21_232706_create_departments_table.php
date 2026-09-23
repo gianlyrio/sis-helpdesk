@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('departments', function (Blueprint $table) {
             $table->id();
             $table->string('name'); // Ex: TI, RH, Manutenção Predial, etc
-            $table->string('description')->nullable();
+            $table->string('code')->nullable();
             $table->timestamps();
         });
     }
