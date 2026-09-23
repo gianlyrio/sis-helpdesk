@@ -36,3 +36,18 @@ Route::get('/forcar-banco', function() {
 
     return "Departamentos criados com sucesso no banco de dados ativo!";
 });
+
+// ROTA DEFINITIVA PARA FORÇAR A COLUNA DE PRIORIDADE
+Route::get('/forcar-coluna', function() {
+    try {
+        if (!\Illuminate\Support\Facades\Schema::hasColumn('tickets', 'priority')) {
+            \Illuminate\Support\Facades\Schema::table('tickets', function ($table) {
+                $table->string('priority')->default('Baixa');
+            });
+            return "Coluna 'priority' injetada com sucesso na tabela física!";
+        }
+        return "A coluna 'priority' já existe na tabela física.";
+    } catch (\Exception $e) {
+        return "Erro ao injetar coluna: " . $e->getMessage();
+    }
+});

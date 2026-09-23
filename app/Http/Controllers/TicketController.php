@@ -42,11 +42,21 @@ class TicketController extends Controller
         return view('tickets.create', compact('departments'));
     }
 
-    public function store(TicketRequest $request)
+        public function store(TicketRequest $request)
     {
+        // Garante dinamicamente a presença da coluna no banco antes de salvar
+        if (!\Illuminate\Support\Facades\Schema::hasColumn('tickets', 'priority')) {
+            \Illuminate\Support\Facades\Schema::table('tickets', function ($table) {
+                $table->string('priority')->default('Baixa');
+            });
+        }
+
+        // Executa a criação do registro com os dados validados
         Ticket::create($request->validated());
+
         return redirect()->route('tickets.index')->with('success', 'Chamado aberto com sucesso!');
     }
+
 
     public function edit(Ticket $ticket)
     {

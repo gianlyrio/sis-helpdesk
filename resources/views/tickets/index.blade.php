@@ -86,8 +86,7 @@ secondary" title="Limpar Filtros"><i class="bi bi-x-lg"></i></a>
                     @forelse($tickets as $ticket) 
                         <tr> 
                             <td class="ps-4"> 
-                                <span class="fw-bold text-dark">#{{ $ticket
->id }} — {{ $ticket->title }}</span> 
+                                <span class="fw-bold text-dark">#{{ $ticket->id }} — {{ $ticket->title }}</span> 
                             </td> 
                             <td> 
                                 <span class="badge bg-light text-dark 
@@ -125,12 +124,10 @@ rounded-pill">Em Atendimento</span>
 pill">Concluído</span> 
                                 @endif 
                             </td> 
-                            <td class="small text-muted">{{ $ticket
->created_at->format('d/m/Y H:i') }}</td> 
+                            <td class="small text-muted">{{ $ticket->created_at->format('d/m/Y H:i') }}</td> 
                             <td class="text-end pe-4"> 
                                 <div class="btn-group btn-group-sm"> 
-                                    <a href="{{ route('tickets.edit', $ticket
->id) }}" class="btn btn-outline-secondary" title="Editar"> 
+                                    <a href="{{ route('tickets.edit', $ticket->id) }}" class="btn btn-outline-secondary" title="Editar"> 
                                         <i class="bi bi-pencil"></i> 
                                     </a> 
                                     <form action="{{ route('tickets.destroy', 
